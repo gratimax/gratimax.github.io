@@ -4,7 +4,9 @@ title:  "Hello, World!"
 date:   2016-03-18
 ---
 
-Hello, World!
+```python
+print("Hello World!")
+```
 
 There were a few things I wanted to write about
 and a few interactives I wanted to make, so why not start a blog?

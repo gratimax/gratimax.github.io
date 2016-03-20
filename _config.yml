@@ -9,7 +9,7 @@
 title: Max Ovsiankin
 email: max@ovsankin.com
 description: >
-  Another programming blog
+  Max Ovsiankins' Blog
 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://gratimax.net" # the base hostname & protocol for your site
@@ -18,3 +18,7 @@ github_username:  gratimax
 
 # Build settings
 markdown: kramdown
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
