@@ -5,7 +5,7 @@ date:   2016-03-18
 ---
 
 ```python
-print("Hello World!")
+print("Hello, World!")
 ```
 
 There were a few things I wanted to write about
