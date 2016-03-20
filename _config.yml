@@ -12,9 +12,12 @@ description: >
   Max Ovsiankins' Blog
 
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://gratimax.net" # the base hostname & protocol for your site
+url: "https://gratimax.net" # the base hostname & protocol for your site
 twitter_username: gratimax
-github_username:  gratimax
+github_username: gratimax
+
+exclude: [code]
+keep_files: [js]
 
 # Build settings
 markdown: kramdown

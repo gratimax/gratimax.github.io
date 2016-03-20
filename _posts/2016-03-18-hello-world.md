@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Hello, World!"
-date:   2016-03-18
+title: "Hello, World!"
+date: 2016-03-18
 ---
 
 ```python
