@@ -16,8 +16,8 @@ url: "https://gratimax.net" # the base hostname & protocol for your site
 twitter_username: gratimax
 github_username: gratimax
 
-exclude: [code]
-keep_files: [js]
+exclude: [code, release]
+keep_files: [js, .git]
 
 # Build settings
 markdown: kramdown

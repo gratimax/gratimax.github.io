@@ -124,7 +124,7 @@ pre {
  * Wrapper
  */
 .wrapper {
-  max-width: $content-width - $spacing-unit * 2;
+  width: $content-width - $spacing-unit * 2;
   margin-right: auto;
   margin-left: auto;
   padding-right: $spacing-unit;
@@ -132,7 +132,7 @@ pre {
   @extend %clearfix;
 
   @include media-query($on-laptop) {
-    max-width: $content-width - $spacing-unit;
+    width: $content-width - $spacing-unit;
     padding-right: $spacing-unit / 2;
     padding-left: $spacing-unit / 2;
   }

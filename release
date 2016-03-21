@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+jekyll b
+cd code
+lein with-profile prod cljsbuild once

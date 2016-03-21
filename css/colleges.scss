@@ -1,0 +1,78 @@
+---
+---
+
+$accept-color: rgb(129, 235, 129);
+$waitlist-color: rgb(240, 231, 70);
+$reject-color: rgb(250, 81, 74);
+$upcoming-color: #ddd;
+
+#viz {
+  cursor: crosshair;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #999;
+}
+
+.area.accept {
+  fill: rgba($accept-color, 0.3);
+  stroke: rgba($accept-color, 0.9);
+}
+
+.area.waitlist {
+  fill: rgba($waitlist-color, 0.3);
+  stroke: rgba($waitlist-color, 0.9);
+}
+
+.area.reject {
+  fill: rgba($reject-color, 0.3);
+  stroke: rgba($reject-color, 0.9);
+}
+
+.area.upcoming {
+  fill: rgba($upcoming-color, 0.3);
+  stroke: rgba($upcoming-color, 0.9);
+}
+
+.college-upcoming-line {
+  stroke: rgba($upcoming-color, 0.9);
+}
+
+.current-day {
+  stroke: #ddd;
+}
+
+.hover line {
+  stroke: #aaa;
+}
+
+.hover text {
+  font: 13px Helvetica, Arial, sans-serif;
+  color: #aaa;
+}
+
+.hover text {
+  text-anchor: end;
+}
+
+.hover.anchor-start text {
+  text-anchor: start;
+}
+
+.hover .college-result.accept {
+  fill: darken($accept-color, 30%);
+}
+
+.hover .college-result.waitlist {
+  fill: darken($waitlist-color, 30%);
+}
+
+.hover .college-result.reject {
+  fill: darken($reject-color, 30%);
+}
+
+.hover .college-result.upcoming {
+  fill: darken($upcoming-color, 30%);
+}
