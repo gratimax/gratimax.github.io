@@ -1,0 +1,54 @@
+#viz {
+  cursor: crosshair; }
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #999; }
+
+.area.accept {
+  fill: rgba(129, 235, 129, 0.3);
+  stroke: rgba(129, 235, 129, 0.9); }
+
+.area.waitlist {
+  fill: rgba(240, 231, 70, 0.3);
+  stroke: rgba(240, 231, 70, 0.9); }
+
+.area.reject {
+  fill: rgba(250, 81, 74, 0.3);
+  stroke: rgba(250, 81, 74, 0.9); }
+
+.area.upcoming {
+  fill: rgba(221, 221, 221, 0.3);
+  stroke: rgba(221, 221, 221, 0.9); }
+
+.college-upcoming-line {
+  stroke: rgba(221, 221, 221, 0.9); }
+
+.current-day {
+  stroke: #ddd; }
+
+.hover line {
+  stroke: #aaa; }
+
+.hover text {
+  font: 13px Helvetica, Arial, sans-serif;
+  color: #aaa; }
+
+.hover text {
+  text-anchor: end; }
+
+.hover.anchor-start text {
+  text-anchor: start; }
+
+.hover .college-result.accept {
+  fill: #1db61d; }
+
+.hover .college-result.waitlist {
+  fill: #918a0c; }
+
+.hover .college-result.reject {
+  fill: #a60b05; }
+
+.hover .college-result.upcoming {
+  fill: #919191; }
