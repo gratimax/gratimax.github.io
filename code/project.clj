@@ -16,4 +16,4 @@
              {:cljsbuild {:builds
                           {:college-decisions-tracker
                            {:compiler {:optimizations :advanced
-                                       :pretty-print false}}}}}})
+                                       :pretty-print  false}}}}}})

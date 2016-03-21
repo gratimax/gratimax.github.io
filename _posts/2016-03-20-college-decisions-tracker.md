@@ -14,6 +14,4 @@ Inspired by 538's [Delegate Tracker] and my own sorrows.
 <svg id="viz" width="720" height="400">
 </svg>
 
-
-
 [delegate tracker]: http://projects.fivethirtyeight.com/election-2016/delegate-targets/
