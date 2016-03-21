@@ -1,14 +1,14 @@
 (ns blog.colleges.list)
 
 (def colleges-list
-  [{:label "UIUC"
-    :name "University of Illinois at Urbana-Champaign"
-    :date [12 3 15]
-    :status :accept}
-   {:label "Stanford"
+  [{:label "Stanford"
     :name "Stanford University"
     :date [12 11 15]
     :status :reject}
+   {:label "UIUC"
+    :name "University of Illinois at Urbana-Champaign"
+    :date [2 6 16]
+    :status :accept}
    {:label "UCSB"
     :name "University of California, Santa Barbara"
     :date [3 1 16]
