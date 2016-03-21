@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 jekyll clean
-jekyll build
+JEKYLL_ENV=production jekyll build
 cd code
 lein with-profile prod cljsbuild once
 cd ../
