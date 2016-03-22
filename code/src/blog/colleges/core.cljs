@@ -2,11 +2,49 @@
   (:require [blog.colleges.list :refer [colleges-list]]
             cljsjs.d3))
 
+
+(enable-console-print!)
+
 (defn mk-date [[month day year]]
   (js/Date. (+ 2000 year) (- month 1) day))
 
 (defn mk-date-vector [date]
   [(+ (.getMonth date) 1) (.getDate date) (- (.getFullYear date) 2000)])
+
+(defn add-days [d days]
+  (let [new-date (js/Date. d)]
+    (.setDate new-date (+ (.getDate d) days))
+    new-date))
+
+(defn augment-date-extent [date-extent]
+  #js [(add-days (aget date-extent 0) -3)
+       (add-days (aget date-extent 1) 3)])
+
+(def colleges-dates
+  (->> colleges-list
+       (map (comp mk-date :date))
+       (into-array)))
+
+(def full-date-extent (augment-date-extent (js/d3.extent colleges-dates)))
+
+(def first-date (aget full-date-extent 0))
+(def last-date (aget full-date-extent 1))
+
+(def last-or-current-date (min (js/Date.) last-date))
+
+(def colleges-graph
+  (let [graph-existing
+        (->> colleges-list
+             (reductions
+               (fn [acc college]
+                 (-> acc
+                     (assoc :date (mk-date (:date college)))
+                     (update (:status college) inc)))
+               {:accept 0 :waitlist 0 :reject 0})
+             (next)
+             (take-while #(not (:upcoming %))))
+        last-point (merge (last graph-existing) {:date last-or-current-date :cur-day true})]
+    (into-array (concat graph-existing [last-point]))))
 
 (def viz (js/d3.select "#viz"))
 (def viz-node (.node viz))
@@ -18,32 +56,7 @@
 (defn in-bounds [x y]
   (and (< 0 x viz-width) (< 0 y viz-height)))
 
-(enable-console-print!)
-
-(def colleges-dates
-  (->> colleges-list
-       (map (comp mk-date :date))
-       (into-array)))
-
 (def time-format (js/d3.time.format "%d %b %y"))
-
-(defn add-days [d days]
-  (let [new-date (js/Date. d)]
-    (.setDate new-date (+ (.getDate d) days))
-    new-date))
-
-(defn augment-date-extent [date-extent]
-  #js [(add-days (aget date-extent 0) -3)
-       (add-days (aget date-extent 1) 3)])
-
-(def full-date-extent
-  (augment-date-extent (js/d3.extent colleges-dates)))
-
-(def last-date
-  (min (js/Date.) (aget full-date-extent 1)))
-
-(def first-date
-  (aget full-date-extent 0))
 
 (def x-scale
   (-> (js/d3.time.scale)
@@ -60,35 +73,16 @@
       (.domain #js [0 10])
       (.range #js [(/ viz-height 2) viz-height])))
 
-(def colleges-graph
-  (let [graph-existing
-        (->> colleges-list
-             (reductions
-               (fn [acc college]
-                 (-> acc
-                     (assoc :date (mk-date (:date college)))
-                     (update (:status college) inc)))
-               {:accept 0 :waitlist 0 :reject 0})
-             (next)
-             (take-while #(not (:upcoming %))))
-        last-point (merge (last graph-existing) {:date last-date :cur-day true})]
-    (into-array (concat graph-existing [last-point]))))
-
-(def results-by-date (group-by :date colleges-list))
-
-(println results-by-date)
-
-(defn make-axis []
+(defn make-axes []
   (let [x-axis (-> (js/d3.svg.axis)
                    (.scale x-scale)
                    (.ticks 0)
-                   (.outerTickSize 0))
-        axis (-> viz
-                 (.append "g")
-                 (.attr "class" "x axis")
-                 (.attr "transform" (str "translate(0, " (/ viz-height 2) ")"))
-                 (.call x-axis))]
-    axis))
+                   (.outerTickSize 0))]
+    (-> viz
+        (.append "g")
+        (.attr "class" "x axis")
+        (.attr "transform" (str "translate(0, " (/ viz-height 2) ")"))
+        (.call x-axis))))
 
 (def upcoming-dates
   (->> colleges-list
@@ -157,7 +151,7 @@
     (make-upcoming-rect)))
 
 (defn make-current-day []
-  (let [x-pos (x-scale last-date)]
+  (let [x-pos (x-scale last-or-current-date)]
     (-> viz
         (.append "line")
         (.attr "class" "current-day")
@@ -195,6 +189,8 @@
       (.text (fn [d]
                (str (:name d) " (" (human-status (:status d)) ")")))
       (.attr "y" (fn [d i] (+ 40 (* 20 i))))))
+
+(def results-by-date (group-by :date colleges-list))
 
 (defn set-hover-line-colleges [g date]
   (let [colleges-on-day (or (results-by-date (mk-date-vector date)) [])
@@ -255,6 +251,6 @@
              (delete-hover))))))
 
 (make-areas)
-(make-axis)
+(make-axes)
 (make-current-day)
 (listen-to-mouse)
