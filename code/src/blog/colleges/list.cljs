@@ -49,11 +49,11 @@
     :name "Princeton University"
     :date [3 31 16]
     :status :upcoming}
-   {:label "Harvard"
-    :name "Harvard University"
-    :date [4 1 16]
-    :status :upcoming}
    {:label "UPenn"
     :name "University of Pennsylvania"
+    :date [3 31 16]
+    :status :upcoming}
+   {:label "Harvard"
+    :name "Harvard University"
     :date [4 1 16]
     :status :upcoming}])
