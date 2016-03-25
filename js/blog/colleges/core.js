@@ -2,6 +2,7 @@
 goog.provide('blog.colleges.core');
 goog.require('cljs.core');
 goog.require('blog.colleges.list');
+cljs.core.enable_console_print_BANG_();
 blog.colleges.core.mk_date = (function blog$colleges$core$mk_date(p__11871){
 var vec__11873 = p__11871;
 var month = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__11873,(0),null);
@@ -12,17 +13,6 @@ return (new Date(((2000) + year),(month - (1)),day));
 blog.colleges.core.mk_date_vector = (function blog$colleges$core$mk_date_vector(date){
 return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(date.getMonth() + (1)),date.getDate(),(date.getFullYear() - (2000))], null);
 });
-blog.colleges.core.viz = d3.select("#viz");
-blog.colleges.core.viz_node = blog.colleges.core.viz.node();
-blog.colleges.core.d3_window = d3.select(window);
-blog.colleges.core.viz_width = blog.colleges.core.viz.attr("width");
-blog.colleges.core.viz_height = blog.colleges.core.viz.attr("height");
-blog.colleges.core.in_bounds = (function blog$colleges$core$in_bounds(x,y){
-return ((((0) < x)) && ((x < blog.colleges.core.viz_width))) && ((((0) < y)) && ((y < blog.colleges.core.viz_height)));
-});
-cljs.core.enable_console_print_BANG_();
-blog.colleges.core.colleges_dates = cljs.core.into_array.cljs$core$IFn$_invoke$arity$1(cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.comp.cljs$core$IFn$_invoke$arity$2(blog.colleges.core.mk_date,cljs.core.cst$kw$date),blog.colleges.list.colleges_list));
-blog.colleges.core.time_format = d3.time.format("%d %b %y");
 blog.colleges.core.add_days = (function blog$colleges$core$add_days(d,days){
 var new_date = (new Date(d));
 new_date.setDate((d.getDate() + days));
@@ -32,29 +22,37 @@ return new_date;
 blog.colleges.core.augment_date_extent = (function blog$colleges$core$augment_date_extent(date_extent){
 return [blog.colleges.core.add_days((date_extent[(0)]),(-3)),blog.colleges.core.add_days((date_extent[(1)]),(3))];
 });
+blog.colleges.core.colleges_dates = cljs.core.into_array.cljs$core$IFn$_invoke$arity$1(cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.comp.cljs$core$IFn$_invoke$arity$2(blog.colleges.core.mk_date,cljs.core.cst$kw$date),blog.colleges.list.colleges_list));
 blog.colleges.core.full_date_extent = blog.colleges.core.augment_date_extent(d3.extent(blog.colleges.core.colleges_dates));
-blog.colleges.core.last_date = (function (){var x__6548__auto__ = (new Date());
-var y__6549__auto__ = (blog.colleges.core.full_date_extent[(1)]);
+blog.colleges.core.first_date = (blog.colleges.core.full_date_extent[(0)]);
+blog.colleges.core.last_date = (blog.colleges.core.full_date_extent[(1)]);
+blog.colleges.core.last_or_current_date = (function (){var x__6548__auto__ = (new Date());
+var y__6549__auto__ = blog.colleges.core.last_date;
 return ((x__6548__auto__ < y__6549__auto__) ? x__6548__auto__ : y__6549__auto__);
 })();
-blog.colleges.core.first_date = (blog.colleges.core.full_date_extent[(0)]);
-blog.colleges.core.x_scale = d3.time.scale().domain(blog.colleges.core.full_date_extent).range([(0),(blog.colleges.core.viz_width - (0))]);
-blog.colleges.core.y_scale_above = d3.scale.linear().domain([(0),(10)]).range([(blog.colleges.core.viz_height / (2)),(0)]);
-blog.colleges.core.y_scale_below = d3.scale.linear().domain([(0),(10)]).range([(blog.colleges.core.viz_height / (2)),blog.colleges.core.viz_height]);
 blog.colleges.core.colleges_graph = (function (){var graph_existing = cljs.core.take_while.cljs$core$IFn$_invoke$arity$2((function (p1__11874_SHARP_){
 return cljs.core.not(cljs.core.cst$kw$upcoming.cljs$core$IFn$_invoke$arity$1(p1__11874_SHARP_));
 }),cljs.core.next(cljs.core.reductions.cljs$core$IFn$_invoke$arity$3((function (acc,college){
 return cljs.core.update.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(acc,cljs.core.cst$kw$date,blog.colleges.core.mk_date(cljs.core.cst$kw$date.cljs$core$IFn$_invoke$arity$1(college))),cljs.core.cst$kw$status.cljs$core$IFn$_invoke$arity$1(college),cljs.core.inc);
 }),new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$accept,(0),cljs.core.cst$kw$waitlist,(0),cljs.core.cst$kw$reject,(0)], null),blog.colleges.list.colleges_list)));
-var last_point = cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([cljs.core.last(graph_existing),new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$date,blog.colleges.core.last_date,cljs.core.cst$kw$cur_DASH_day,true], null)], 0));
+var last_point = cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([cljs.core.last(graph_existing),new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$date,blog.colleges.core.last_or_current_date,cljs.core.cst$kw$cur_DASH_day,true], null)], 0));
 return cljs.core.into_array.cljs$core$IFn$_invoke$arity$1(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(graph_existing,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [last_point], null)));
 })();
-blog.colleges.core.results_by_date = cljs.core.group_by(cljs.core.cst$kw$date,blog.colleges.list.colleges_list);
-cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([blog.colleges.core.results_by_date], 0));
-blog.colleges.core.make_axis = (function blog$colleges$core$make_axis(){
+blog.colleges.core.viz = d3.select("#viz");
+blog.colleges.core.viz_node = blog.colleges.core.viz.node();
+blog.colleges.core.d3_window = d3.select(window);
+blog.colleges.core.viz_width = blog.colleges.core.viz.attr("width");
+blog.colleges.core.viz_height = blog.colleges.core.viz.attr("height");
+blog.colleges.core.in_bounds = (function blog$colleges$core$in_bounds(x,y){
+return ((((0) < x)) && ((x < blog.colleges.core.viz_width))) && ((((0) < y)) && ((y < blog.colleges.core.viz_height)));
+});
+blog.colleges.core.time_format = d3.time.format("%d %b %y");
+blog.colleges.core.x_scale = d3.time.scale().domain(blog.colleges.core.full_date_extent).range([(0),(blog.colleges.core.viz_width - (0))]);
+blog.colleges.core.y_scale_above = d3.scale.linear().domain([(0),(10)]).range([(blog.colleges.core.viz_height / (2)),(0)]);
+blog.colleges.core.y_scale_below = d3.scale.linear().domain([(0),(10)]).range([(blog.colleges.core.viz_height / (2)),blog.colleges.core.viz_height]);
+blog.colleges.core.make_axes = (function blog$colleges$core$make_axes(){
 var x_axis = d3.svg.axis().scale(blog.colleges.core.x_scale).ticks((0)).outerTickSize((0));
-var axis = blog.colleges.core.viz.append("g").attr("class","x axis").attr("transform",[cljs.core.str("translate(0, "),cljs.core.str((blog.colleges.core.viz_height / (2))),cljs.core.str(")")].join('')).call(x_axis);
-return axis;
+return blog.colleges.core.viz.append("g").attr("class","x axis").attr("transform",[cljs.core.str("translate(0, "),cljs.core.str((blog.colleges.core.viz_height / (2))),cljs.core.str(")")].join('')).call(x_axis);
 });
 blog.colleges.core.upcoming_dates = cljs.core.map.cljs$core$IFn$_invoke$arity$2(blog.colleges.core.mk_date,cljs.core.distinct.cljs$core$IFn$_invoke$arity$1(cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$date,cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p1__11875_SHARP_){
 return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$status.cljs$core$IFn$_invoke$arity$1(p1__11875_SHARP_),cljs.core.cst$kw$upcoming);
@@ -177,7 +175,7 @@ blog.colleges.core.viz.append("path").datum(blog.colleges.core.colleges_graph).a
 return blog.colleges.core.make_upcoming_rect();
 });
 blog.colleges.core.make_current_day = (function blog$colleges$core$make_current_day(){
-var x_pos = (blog.colleges.core.x_scale.cljs$core$IFn$_invoke$arity$1 ? blog.colleges.core.x_scale.cljs$core$IFn$_invoke$arity$1(blog.colleges.core.last_date) : blog.colleges.core.x_scale.call(null,blog.colleges.core.last_date));
+var x_pos = (blog.colleges.core.x_scale.cljs$core$IFn$_invoke$arity$1 ? blog.colleges.core.x_scale.cljs$core$IFn$_invoke$arity$1(blog.colleges.core.last_or_current_date) : blog.colleges.core.x_scale.call(null,blog.colleges.core.last_or_current_date));
 return blog.colleges.core.viz.append("line").attr("class","current-day").attr("stroke-dasharray","5, 5").attr("x1",x_pos).attr("y1",(0)).attr("x2",x_pos).attr("y2",blog.colleges.core.viz_height);
 });
 blog.colleges.core.hover_line = (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(null) : cljs.core.atom.call(null,null));
@@ -200,6 +198,7 @@ return (blog.colleges.core.human_status.cljs$core$IFn$_invoke$arity$1 ? blog.col
 return ((40) + ((20) * i));
 }));
 });
+blog.colleges.core.results_by_date = cljs.core.group_by(cljs.core.cst$kw$date,blog.colleges.list.colleges_list);
 blog.colleges.core.set_hover_line_colleges = (function blog$colleges$core$set_hover_line_colleges(g,date){
 var colleges_on_day = (function (){var or__6210__auto__ = (function (){var G__11935 = blog.colleges.core.mk_date_vector(date);
 return (blog.colleges.core.results_by_date.cljs$core$IFn$_invoke$arity$1 ? blog.colleges.core.results_by_date.cljs$core$IFn$_invoke$arity$1(G__11935) : blog.colleges.core.results_by_date.call(null,G__11935));
@@ -274,6 +273,6 @@ return blog.colleges.core.delete_hover();
 }));
 });
 blog.colleges.core.make_areas();
-blog.colleges.core.make_axis();
+blog.colleges.core.make_axes();
 blog.colleges.core.make_current_day();
 blog.colleges.core.listen_to_mouse();
