@@ -44,7 +44,7 @@
    {:label "UCB"
     :name "University of California, Berkeley"
     :date [3 24 16]
-    :status :upcoming}
+    :status :accept}
    {:label "Princeton"
     :name "Princeton University"
     :date [3 31 16]
