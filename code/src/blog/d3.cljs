@@ -1,5 +1,6 @@
 (ns blog.d3
-  (:require cljsjs.d3))
+  (:require cljsjs.d3)
+  (:refer-clojure :exclude [range remove]))
 
 (defn- doprops [obj prop-map props]
   (doseq [[k v] (partition 2 props)
