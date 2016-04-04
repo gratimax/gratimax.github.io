@@ -143,8 +143,8 @@ body {
  */
 .site-header {
   min-height: 56px;
-  background-color: #f6f4ee;
-  border-top: 5px solid #3B7EA1;
+  background-color: #f9f8f6;
+  border-top: 5px solid #003262;
   margin-bottom: 20px;
   padding: 10px 0;
   position: relative; }
@@ -155,9 +155,12 @@ body {
   line-height: 56px;
   margin-bottom: 0;
   float: left;
-  color: #505050; }
+  letter-spacing: -1px; }
   .site-title, .site-title:visited {
     color: #424242; }
+  .site-title:hover {
+    text-decoration: none;
+    color: #6e6e6e; }
 
 .site-nav {
   float: right;
