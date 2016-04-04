@@ -8,8 +8,7 @@
 # Site settings
 title: Max Ovsiankin
 email: max@ovsankin.com
-description: >
-  Max Ovsiankins' Blog
+description: Max Ovsiankin
 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://gratimax.net" # the base hostname & protocol for your site

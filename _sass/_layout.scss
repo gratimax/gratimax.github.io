@@ -12,8 +12,8 @@ body {
  */
 .site-header {
   min-height: 56px;
-  background-color: hsl(41, 30%, 95%);
-  border-top: 5px solid #3B7EA1;
+  background-color: hsl(41, 20%, 97%);
+  border-top: 5px solid #003262;
   margin-bottom: 20px;
   padding: 10px 0;
 
@@ -27,11 +27,16 @@ body {
   line-height: 56px;
   margin-bottom: 0;
   float: left;
-  color: rgb(80, 80, 80);
+  letter-spacing: -1px;
 
   &,
   &:visited {
     color: $grey-color-dark;
+  }
+
+  &:hover {
+    text-decoration: none;
+    color: rgb(110, 110, 110);
   }
 }
 
