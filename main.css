@@ -187,7 +187,7 @@ body {
   margin-left: 0;
   list-style: none; }
   .post-list > li {
-    margin-bottom: 30px; }
+    margin-bottom: 45px; }
 
 .post-meta {
   font-size: 18px;
@@ -208,6 +208,9 @@ body {
   line-height: 1;
   color: #303030;
   font-weight: bold;
+  margin-bottom: 0; }
+
+.post-title-home {
   margin-bottom: 0; }
 
 .post-content {
