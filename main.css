@@ -11,7 +11,7 @@ dl, dd, ol, ul, figure {
  * Basic styling
  */
 body {
-  font: 400 16px/1.5 Helvetica Arial, sans-serif;
+  font: 400 18px/1.5 Helvetica, Arial, sans-serif;
   color: #515151;
   background-color: #fff; }
 
@@ -71,7 +71,7 @@ blockquote {
   color: #828282;
   border-left: 4px solid #e8e8e8;
   padding-left: 15px;
-  font-size: 18px;
+  font-size: 1.3rem;
   letter-spacing: -1px;
   font-style: italic; }
   blockquote > :last-child {
@@ -82,7 +82,7 @@ blockquote {
  */
 pre,
 code {
-  font-size: 15px;
+  font-size: 1rem;
   border-left: 3px solid #e8e8e8;
   background-color: #fbfbfb; }
 
@@ -101,14 +101,14 @@ pre {
  * Wrapper
  */
 .wrapper {
-  width: 720px;
+  max-width: 720px;
   margin-right: auto;
   margin-left: auto;
   padding-right: 30px;
   padding-left: 30px; }
   @media screen and (max-width: 800px) {
     .wrapper {
-      width: 750px;
+      max-width: 750px;
       padding-right: 15px;
       padding-left: 15px; } }
 
@@ -143,8 +143,10 @@ body {
  */
 .site-header {
   min-height: 56px;
-  border-top: 3px solid #776ebe;
+  background-color: #f6f4ee;
+  border-top: 5px solid #3B7EA1;
   margin-bottom: 20px;
+  padding: 10px 0;
   position: relative; }
 
 .site-title {
@@ -167,40 +169,6 @@ body {
     line-height: 1.5; }
     .site-nav .page-link:not(:last-child) {
       margin-right: 20px; }
-  @media screen and (max-width: 600px) {
-    .site-nav {
-      position: absolute;
-      top: 9px;
-      right: 15px;
-      background-color: #fff;
-      border: 1px solid #e8e8e8;
-      border-radius: 5px;
-      text-align: right; }
-      .site-nav .menu-icon {
-        display: block;
-        float: right;
-        width: 36px;
-        height: 26px;
-        line-height: 0;
-        padding-top: 10px;
-        text-align: center; }
-        .site-nav .menu-icon > svg {
-          width: 18px;
-          height: 15px; }
-          .site-nav .menu-icon > svg path {
-            fill: #424242; }
-      .site-nav .trigger {
-        clear: both;
-        display: none; }
-      .site-nav:hover .trigger {
-        display: block;
-        padding-bottom: 5px; }
-      .site-nav .page-link {
-        display: block;
-        padding: 5px 10px;
-        margin-left: 20px; }
-        .site-nav .page-link:not(:last-child) {
-          margin-right: 0; } }
 
 /**
  * Page content
@@ -241,7 +209,8 @@ body {
 
 .post-content {
   margin-bottom: 90px;
-  line-height: 1.5; }
+  line-height: 1.5;
+  font-family: Georgia, serif; }
   .post-content h2 {
     font-size: 32px; }
     @media screen and (max-width: 800px) {
