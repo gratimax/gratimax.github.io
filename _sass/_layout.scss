@@ -125,7 +125,7 @@ body {
   list-style: none;
 
   > li {
-    margin-bottom: $spacing-unit;
+    margin-bottom: $spacing-unit * 1.5;
   }
 }
 
@@ -151,6 +151,10 @@ body {
   line-height: 1;
   color: rgb(48, 48, 48);
   font-weight: bold;
+  margin-bottom: 0;
+}
+
+.post-title-home {
   margin-bottom: 0;
 }
 
