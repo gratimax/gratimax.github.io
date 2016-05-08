@@ -5,8 +5,8 @@ permalink: /about/
 ---
 
 I am a high school senior with interests in computer science and physics.
-I currently go to De Anza College, and am waiting for college decisions for
-next year.
+I currently go to De Anza College, and will be an undergraduate at Berkeley
+starting next year.
 
 Social profiles:
 
