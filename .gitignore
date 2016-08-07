@@ -5,3 +5,4 @@ _site
 *.iml
 .git-site/
 .DS_Store
+_posts/*.draft.md
