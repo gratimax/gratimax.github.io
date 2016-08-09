@@ -1,3 +1,5 @@
+@import "_vars";
+
 /**
  * Reset some basic elements
  */
@@ -165,4 +167,30 @@ pre {
       fill: $grey-color;
     }
   }
+}
+
+$edit-color: #fff8d6;
+
+.edit blockquote {
+  font: $base-font-weight #{$base-font-size}/#{$base-line-height} $body-family;
+  color: $text-color;
+  padding: 8px 12px;
+  background-color: $edit-color;
+  letter-spacing: 0;
+  border-radius: 4px;
+  border-left-color: darken(desaturate($edit-color, 10%), 10%);
+  border-right: 4px solid darken(desaturate($edit-color, 10%), 10%);
+}
+
+$series-color: #d5caff;
+
+.series blockquote {
+  font: $base-font-weight #{$base-font-size}/#{$base-line-height} $body-family;
+  color: $text-color;
+  padding: 8px 12px;
+  background-color: $series-color;
+  letter-spacing: 0;
+  border-radius: 4px;
+  border-left-color: darken(desaturate($series-color, 10%), 10%);
+  border-right: 4px solid darken(desaturate($series-color, 10%), 10%);
 }

@@ -1,15 +1,11 @@
 #!/usr/bin/env bash
 
-jekyll clean
-JEKYLL_ENV=production jekyll build
-cd code
-lein with-profile prod cljsbuild once
-cd ../
+lein build-site
 
 git clone git@github.com:gratimax/gratimax.github.io .git-site
 cd .git-site
 git checkout master
-cp -R ..//_site/* .
+cp -R ../resources/_public/* .
 git add .
 git commit -m "Update $(date)"
 git push origin master

@@ -1,3 +1,5 @@
+@import "_vars";
+
 html {
   position: relative;
   min-height: 100%;
@@ -159,7 +161,7 @@ body {
 }
 
 .post-content {
-  margin-bottom: $spacing-unit * 3;
+  margin-bottom: $spacing-unit;
   line-height: 1.5;
   font-family: $body-family;
 
