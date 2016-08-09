@@ -83,7 +83,7 @@
       (:html post)]]
     (for [js (:scripts post)]
       (include-js (str "/js/" js ".js")))
-    (if-not (= ["true"] (:no-disqus post))
+    (when-not (or (= ["true"] (:no-disqus post)) (:draft post))
       (disqus ctx post))))
 
 (defn page [ctx page]
