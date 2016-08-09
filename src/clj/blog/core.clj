@@ -31,7 +31,7 @@
           date-str (nth group 1)
           date (util/time-parse date-str)
           slug (nth group 2)]
-      [(str "/" (util/time-unparse-url date) "/" slug "/")
+      [(str "/" slug "/")
        (assoc post :date date
                    :slug slug)])))
 
