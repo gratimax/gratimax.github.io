@@ -21,7 +21,7 @@
 ;;<link rel="alternate" type="application/rss+xml" title="{{ site.title }}"
 ;; href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
 
-(defn header [ctx title]
+(defn header [ctx]
   [:header.site-header
    [:div.wrapper
     [:a.site-title {:href "/"} "Max Ovsiankin"]
@@ -39,10 +39,10 @@
   (html5
     (head ctx title)
     [:body
-     (header ctx title)
+     (header ctx)
      [:div.page-content
       [:div.wrapper content]]
-     (when (not= mode "prod")
+     (when (= mode "prod")
        google-analytics)]))
 
 (defn post-listing [ctx post]

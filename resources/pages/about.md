@@ -1,6 +1,7 @@
 # About
 
-I am Berkeley undergraduate with interests in math, computer science, and physics.
+I am an undergraduate student at Berkeley with interests in
+math, computer science, and physics.
 
 Check me out on social media:
 

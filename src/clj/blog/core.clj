@@ -106,10 +106,14 @@
     optimizations/all
     optimizations/none))
 
+;; this deserves a major refactor
+(defn make-pages []
+  (vals (markdown-files (stasis/slurp-directory "resources/pages" md-ext)
+                        get-page-info)))
+
 (def app
   (-> (stasis/serve-pages get-site
-                          {:pages (vals (markdown-files (stasis/slurp-directory "resources/pages" md-ext)
-                                                        get-page-info))})
+                          {:pages (make-pages)})
       (optimus/wrap get-assets
                     (get-optimizations)
                     strategies/serve-live-assets)
@@ -125,7 +129,8 @@
         old-files (load-target-dir)]
     (stasis/empty-directory! target-dir)
     (save-assets ((get-optimizations) app-assets {}) target-dir)
-    (stasis/export-pages pages target-dir {:optimus-assets app-assets})
+    (stasis/export-pages pages target-dir {:optimus-assets app-assets
+                                           :pages (make-pages)})
     (stasis/report-differences old-files (load-target-dir))))
 
 (defn -main []
