@@ -19,6 +19,6 @@ pom.xml.asc
 
 resources/_public/
 resources/built-cljs/
-resources/posts/*.draft.md
+resources/**/*.draft.md
 old/
 .sass-cache/
