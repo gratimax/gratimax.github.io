@@ -50,7 +50,9 @@
                  [(sanitize-name k) (md/md->html v)]))
        (map-kv (fn [k v]
                  (if (.endsWith k ".draft/")
-                   [(str/replace k #"\.draft" "") (assoc v :draft true)]
+                   [(str/replace k #"\.draft" "") (-> v
+                                                      (assoc :draft true)
+                                                      (update :title #(str % "*")))]
                    [k v])))
        (map-kv info-fn)
        (filter-drafts)
