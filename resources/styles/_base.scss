@@ -194,3 +194,12 @@ $series-color: #d5caff;
   border-left-color: darken(desaturate($series-color, 10%), 10%);
   border-right: 4px solid darken(desaturate($series-color, 10%), 10%);
 }
+
+hr {
+  margin-bottom: $spacing-unit;
+  margin-top: $spacing-unit;
+  border-bottom: 4px solid #ddd;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
