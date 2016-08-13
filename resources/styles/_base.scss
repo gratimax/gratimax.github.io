@@ -195,6 +195,39 @@ $series-color: #d5caff;
   border-right: 4px solid darken(desaturate($series-color, 10%), 10%);
 }
 
+pre.terminal {
+  background-color: #2b303b;
+  border-color: #666;
+  line-height: 1.0;
+  padding: 14px 12px;
+  code {
+    font-size: 13px;
+    background-color: #2b303b;
+    color: #c0c5ce;
+  }
+  .r {
+    color: #bf616a;
+  }
+  .g {
+    color: #a3be8c;
+  }
+  .k {
+    color: #65737e;
+  }
+  .y {
+    color: #ebcb8b;
+  }
+  .b {
+    color: #8fa1b3;
+  }
+  .c {
+    color: #96b5b4;
+  }
+  .m {
+    color: #b48ead;
+  }
+}
+
 hr {
   margin-bottom: $spacing-unit;
   margin-top: $spacing-unit;
