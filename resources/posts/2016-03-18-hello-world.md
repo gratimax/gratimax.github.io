@@ -31,7 +31,7 @@ be both more lightweight and relevant for discussions on this blog.
 [jekyll]: https://jekyllrb.com
 [clojurescript]: https://github.com/clojure/clojurescript
 [poole]: http://getpoole.com
-[blog-is-data]: /2016/08/07/blog-is-data/
+[blog-is-data]: /blog-is-data/
 
 <div class="edit">
 
