@@ -94,14 +94,15 @@
 
 (defn get-assets []
   (concat
-    (->>
-      (assets/load-assets "styles" [#"/[^_].*\.scss$"])
-      (put-in-dir "css"))
-    (->>
-      (assets/load-assets "built-cljs" [#"/.*\.js$"])
-      (put-in-dir "js"))
-    [{:path "/CNAME"
-     :contents "gratimax.net"}]))
+   (->>
+    (assets/load-assets "styles" [#"/[^_].*\.scss$"])
+    (put-in-dir "css"))
+   (->>
+    (assets/load-assets "built-cljs" [#"/.*\.js$"])
+    (put-in-dir "js"))
+  ;  [{:path "/CNAME"
+  ;    :contents "gratimax.net"}]
+   ))
 
 (defn get-optimizations []
   (if (= mode "prod")
