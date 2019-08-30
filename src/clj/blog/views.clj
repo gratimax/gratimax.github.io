@@ -16,7 +16,7 @@
    [:meta {:charset "utf-8"}]
    [:meta {:http-equiv "X-UA-Compatible" :content "IE=edge"}]
    [:meta {:name "viewport" :content "width=device-width, initial-scale=1"}]
-   (include-css (o/file-path ctx "/main.scss"))
+   (include-css "/old-website/css/main.css")
    [:title title]])
 ;;<link rel="alternate" type="application/rss+xml" title="{{ site.title }}"
 ;; href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
@@ -24,12 +24,12 @@
 (defn header [ctx]
   [:header.site-header
    [:div.wrapper
-    [:a.site-title {:href "/"} "Max Ovsiankin"]
+    [:a.site-title {:href "/old-website/"} "Max Ovsiankin"]
     [:nav.site-nav
      [:a.menu-icon {:href "#"} menu-icon]
      [:div.trigger
       (for [page (:pages ctx)]
-        [:a.page-link {:href (:url page)} (:title page)])]]]])
+        [:a.page-link {:href (str "/old-website" (:url page))} (:title page)])]]]])
 
 (def mode (env :site-mode "dev"))
 
@@ -48,7 +48,7 @@
 (defn post-listing [ctx post]
   [:li
    [:h2.post-title-home
-    [:a.post-link {:href (:url post)} (:title post)]]
+    [:a.post-link {:href (str "/old-website" (:url post))} (:title post)]]
    [:span.post-meta (util/time-unparse (:date post))]])
 
 (defn home [ctx posts]
@@ -74,7 +74,7 @@
     ctx
     (:title post)
     (for [css (:styles post)]
-      (include-css (str "/css/" css ".css")))
+      (include-css (str "/old-website/css/" css ".css")))
     [:article.post
      [:header.post-header
       [:h1.post-title (:title post)]
@@ -82,7 +82,7 @@
      [:div.post-content
       (:html post)]]
     (for [js (:scripts post)]
-      (include-js (str "/js/" js ".js")))
+      (include-js (str "/old-website/js/" js ".js")))
     (when-not (or (= ["true"] (:no-disqus post)) (:draft post))
       (disqus ctx post))))
 
