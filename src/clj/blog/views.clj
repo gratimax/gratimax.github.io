@@ -9,7 +9,7 @@
 
 (def menu-icon (slurp (io/as-file "resources/menu-icon.svg")))
 
-(def site-url "https://gratimax.net")
+(def site-url "https://maxov.github.io/old-website/")
 
 (defn head [ctx title]
   [:head

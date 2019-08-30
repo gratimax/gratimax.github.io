@@ -2,7 +2,7 @@
 
 lein build-site
 
-git clone git@github.com:gratimax/gratimax.github.io .git-site
+git clone git@github.com:maxov/old-site .git-site
 cd .git-site
 git checkout master
 cp -R ../resources/_public/* .
